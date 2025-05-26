@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MatchDotCom.UserDetails
+{
+    public class ProfileBio
+    {
+        /// <summary>
+        /// Gets or sets the unique identifier for the profile bio inlcuding bio, life, data, and other details.
+        /// </summary>
+        public Guid Id { get; set; } = Guid.NewGuid();
+
+        /// <summary>
+        /// Gets or sets the bio text of the user.
+        /// </summary>
+        [Required(ErrorMessage = "Bio is required.")]
+        [MinLength(500, ErrorMessage = "Bio must be at least 500 characters.")]
+        public required string BioText { get; set; }
+
+        /// <summary>
+        /// Gets or sets the life motto or quote of the user.
+        /// </summary>
+        [MaxLength(200, ErrorMessage = "Life motto cannot exceed 200 characters.")]
+        public string? LifeMotto { get; set; }
+
+        /// <summary>
+        /// User's Gender.
+        /// </summary>
+        [Required(ErrorMessage = "Gender is required.")]
+        public required MatchDotCom.UserDetails.GenderOptions Gender { get; set; }
+
+        /// <summary>
+        /// Gets or sets the date when the bio was created.
+        /// </summary>
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+        /// <summary>
+        /// Gets or sets the date when the bio was last updated.
+        /// </summary>
+        public DateTime? UpdatedAt { get; set; }
+    }
+
+
+}

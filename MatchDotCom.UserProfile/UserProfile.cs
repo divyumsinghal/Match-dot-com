@@ -11,10 +11,8 @@ namespace MatchDotCom.UserProfile
         public required string MiddleName { get; set; } = "";
         public required string LastName { get; set; } = "";
 
-        public required MatchDotCom.UserDetails.GenderOptions Gender { get; set; }
-
         public required MatchDotCom.UserDetails.Contact Contact { get; set; }
-        public required string Bio { get; set; } = "";
+        public required MatchDotCom.UserDetails.ProfileBio Bio { get; set; }
 
         // Add more properties as needed
     }
