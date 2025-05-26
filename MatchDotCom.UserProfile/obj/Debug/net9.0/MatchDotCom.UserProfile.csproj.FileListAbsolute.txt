@@ -1,0 +1,12 @@
+/home/sin/Match-dot-com/MatchDotCom.UserProfile/bin/Debug/net9.0/MatchDotCom.UserProfile.deps.json
+/home/sin/Match-dot-com/MatchDotCom.UserProfile/bin/Debug/net9.0/MatchDotCom.UserProfile.dll
+/home/sin/Match-dot-com/MatchDotCom.UserProfile/bin/Debug/net9.0/MatchDotCom.UserProfile.pdb
+/home/sin/Match-dot-com/MatchDotCom.UserProfile/obj/Debug/net9.0/MatchDotCom.UserProfile.GeneratedMSBuildEditorConfig.editorconfig
+/home/sin/Match-dot-com/MatchDotCom.UserProfile/obj/Debug/net9.0/MatchDotCom.UserProfile.AssemblyInfoInputs.cache
+/home/sin/Match-dot-com/MatchDotCom.UserProfile/obj/Debug/net9.0/MatchDotCom.UserProfile.AssemblyInfo.cs
+/home/sin/Match-dot-com/MatchDotCom.UserProfile/obj/Debug/net9.0/MatchDotCom.UserProfile.csproj.CoreCompileInputs.cache
+/home/sin/Match-dot-com/MatchDotCom.UserProfile/obj/Debug/net9.0/MatchDotCom.UserProfile.sourcelink.json
+/home/sin/Match-dot-com/MatchDotCom.UserProfile/obj/Debug/net9.0/MatchDotCom.UserProfile.dll
+/home/sin/Match-dot-com/MatchDotCom.UserProfile/obj/Debug/net9.0/refint/MatchDotCom.UserProfile.dll
+/home/sin/Match-dot-com/MatchDotCom.UserProfile/obj/Debug/net9.0/MatchDotCom.UserProfile.pdb
+/home/sin/Match-dot-com/MatchDotCom.UserProfile/obj/Debug/net9.0/ref/MatchDotCom.UserProfile.dll
