@@ -28,6 +28,11 @@ namespace MatchDotCom.UserDetails
         public required string Email { get; set; }
 
         /// <summary>
+        /// Adress of the user.
+        /// </summary>
+        public required Address Address { get; set; }
+
+        /// <summary>
         /// Audit fields for real-world tracking
         /// </summary>
         [Required]
@@ -39,10 +44,11 @@ namespace MatchDotCom.UserDetails
         /// </summary>
         /// <param name="email">The email address of the user.</param>
         /// <param name="phoneNumber">The phone number of the user.</param>
-        public Contact(string email, string phoneNumber)
+        public Contact(string email, string phoneNumber, Address address)
         {
             Email = email;
             PhoneNumber = phoneNumber;
+            Address = address;
         }
     }
 }

@@ -1,4 +1,4 @@
-namespace MatchDotCom.GenderOptions
+namespace MatchDotCom.UserDetails
 {
     public enum GenderOptions
     {

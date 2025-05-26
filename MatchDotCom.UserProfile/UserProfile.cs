@@ -1,16 +1,20 @@
-﻿namespace MatchDotCom.UserProfile
+﻿using System.Text.RegularExpressions;
+
+namespace MatchDotCom.UserProfile
 {
     public class UserProfile
     {
-        public Guid Id { get; set; }
+        public required Guid Id { get; set; } = Guid.NewGuid();
 
-        public string Username { get; set; } = "";
-        public string FirstName { get; set; } = "";
-        public string MiddleName { get; set; } = "";
-        public string LastName { get; set; } = "";
+        public required string Username { get; set; } = "";
+        public required string FirstName { get; set; } = "";
+        public required string MiddleName { get; set; } = "";
+        public required string LastName { get; set; } = "";
 
-        public MatchDotCom.GenderOptions.GenderOptions Gender { get; set; }
-        public string Bio { get; set; } = "";
+        public required MatchDotCom.UserDetails.GenderOptions Gender { get; set; }
+
+        public required MatchDotCom.UserDetails.Contact Contact { get; set; }
+        public required string Bio { get; set; } = "";
 
         // Add more properties as needed
     }
