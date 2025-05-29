@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using System.Diagnostics.CodeAnalysis;
+using System.Text.Json;
 
 namespace MatchDotCom.UserProfile
 {
@@ -64,6 +65,19 @@ namespace MatchDotCom.UserProfile
             DateOfBirth = dateOfBirth;
             Contact = contact ?? throw new ArgumentNullException(nameof(contact));
             Bio = bio ?? throw new ArgumentNullException(nameof(bio));
+        }
+
+        /// <summary>
+        /// Converts the UserProfile object into a json for storage in database.
+        /// </summary>
+        public string ToJson()
+        {
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true // Optional: makes the output human-readable
+            };
+
+            return JsonSerializer.Serialize(this, options);
         }
 
     }

@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
+using System.Text.Json;
 
 namespace MatchDotCom.UserDetails
 {
@@ -106,5 +102,19 @@ namespace MatchDotCom.UserDetails
                 // Keep the default coordinates if geocoding fails
             }
         }
+
+        /// <summary>
+        /// Converts the address object into a json for storage in database.
+        /// </summary>
+        public string ToJson()
+        {
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true // Optional: makes the output human-readable
+            };
+
+            return JsonSerializer.Serialize(this, options);
+        }
+
     }
 }

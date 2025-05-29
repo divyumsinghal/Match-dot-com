@@ -49,12 +49,8 @@ class Program
             bio: bio
         );
 
-        Console.WriteLine($"Created user profile for: {userProfile.FirstName} {userProfile.LastName}");
-        Console.WriteLine($"Username: {userProfile.Username}");
-        Console.WriteLine($"Email: {userProfile.Contact.Email}");
-        Console.WriteLine($"Bio length: {userProfile.Bio.BioText.Length} characters");
-        Console.WriteLine($"Interests: {string.Join(", ", userProfile.Bio.Interests)}");
-        Console.WriteLine($"Address: {userProfile.Contact.Address.Street}, {userProfile.Contact.Address.City}");
-        Console.WriteLine($"Coordinates: {userProfile.Contact.Address.Coordinates.latitude:F6}, {userProfile.Contact.Address.Coordinates.longitude:F6}");
+        var json = userProfile.ToJson();
+
+        Console.WriteLine($"Created user profile for: {json}");
     }
 }
