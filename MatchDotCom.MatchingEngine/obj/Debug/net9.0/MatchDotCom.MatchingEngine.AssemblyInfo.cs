@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MatchDotCom.MatchingEngine")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3ae46d56a9d1ffbd607aed80fc68ea2a7f3f7ac3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d18e2e6babc4120bd02e113aff3f671f0de0c1f8")]
 [assembly: System.Reflection.AssemblyProductAttribute("MatchDotCom.MatchingEngine")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MatchDotCom.MatchingEngine")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

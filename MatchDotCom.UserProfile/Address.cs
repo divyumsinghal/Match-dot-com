@@ -31,9 +31,16 @@ namespace MatchDotCom.UserDetails
         [MaxLength(50)]
         public required string Country { get; set; }
 
-        // Optional: Geolocation or metadata
-        public double? Latitude { get; set; }
-        public double? Longitude { get; set; }
+        /// <summary>
+        /// Eircode
+        /// /// </summary>
+        /// [MaxLength(10)]
+        [MaxLength(10, ErrorMessage = "Eircode cannot exceed 10 characters.")]
+        public string Eircode { get; set; }
+
+        // Geolocation
+        public required double Latitude { get; set; }
+        public required double Longitude { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Address"/> class.
@@ -43,13 +50,17 @@ namespace MatchDotCom.UserDetails
         /// <param name="stateOrProvince">The state or province.</param>
         /// <param name="postalCode">The postal code.</param>
         /// <param name="country">The country.</param>
-        public Address(string street, string city, string stateOrProvince, string postalCode, string country)
+        /// <param name="eircode">The Eircode (optional).</param>
+        public Address(string street, string city, string stateOrProvince, string postalCode, string country, string eircode)
         {
             Street = street;
             City = city;
             StateOrProvince = stateOrProvince;
             PostalCode = postalCode;
             Country = country;
+            Eircode = eircode;
+
+
         }
     }
 }
