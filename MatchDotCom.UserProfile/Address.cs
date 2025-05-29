@@ -40,8 +40,7 @@ namespace MatchDotCom.UserDetails
         public string Eircode { get; set; }
 
         // Geolocation
-        public required double Latitude { get; set; }
-        public required double Longitude { get; set; }
+        public required Coordinates Coordinates { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Address"/> class.
@@ -63,9 +62,49 @@ namespace MatchDotCom.UserDetails
             Country = country;
             Eircode = eircode;
 
-            // Get Latitude and Longitude from Eircode
-            Latitude = 0.0; // Placeholder for actual geolocation logic
-            Longitude = 0.0; // Placeholder for actual geolocation logic
+            // Initialize with default coordinates that will be updated asynchronously
+            Coordinates = new Coordinates
+            {
+                latitude = 53.3498, // Dublin city center default
+                longitude = -6.2603
+            };
+        }
+
+        /// <summary>
+        /// Asynchronously initializes a new instance of the <see cref="Address"/> class with geocoded coordinates.
+        /// </summary>
+        public static async Task<Address> CreateAsync(string street, string city, string stateOrProvince, string postalCode, string country, string eircode)
+        {
+            var address = new Address(street, city, stateOrProvince, postalCode, country, eircode);
+            await address.UpdateCoordinatesAsync();
+            return address;
+        }
+
+        /// <summary>
+        /// Updates the coordinates by geocoding the address.
+        /// </summary>
+        public async Task UpdateCoordinatesAsync()
+        {
+            try
+            {
+                // Create a comprehensive address string for geocoding
+                string fullAddress = $"{Street}, {City}, {StateOrProvince}, {PostalCode}, {Country}";
+                if (!string.IsNullOrWhiteSpace(Eircode))
+                {
+                    fullAddress = $"{Eircode}, {fullAddress}";
+                }
+
+                var coords = await Geocoder.GetCoordinatesAsync(fullAddress);
+                if (coords != null)
+                {
+                    Coordinates = coords;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to update coordinates: {ex.Message}");
+                // Keep the default coordinates if geocoding fails
+            }
         }
     }
 }

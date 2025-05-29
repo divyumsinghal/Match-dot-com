@@ -1,20 +1,22 @@
 ﻿using MatchDotCom.UserProfile;
 using MatchDotCom.UserDetails;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
-        // Create an Address
-        var address = new Address(
-    street: "123 Main Street",
-    city: "Dublin",
-    stateOrProvince: "Leinster",
-    postalCode: "D01 A1B2",
-    country: "Ireland",
-    eircode: "D01 A1B2"
-);
-
+        // Create an Address using the async factory method
+        var address = await Address.CreateAsync(
+            street: "Trinity College Dublin, College Green",
+            city: "Dublin",
+            stateOrProvince: "Leinster",
+            postalCode: "D02 PN40",
+            country: "Ireland",
+            eircode: "D02 PN40"
+        );
 
         // Create Contact information
         var contact = new Contact(
@@ -52,5 +54,7 @@ class Program
         Console.WriteLine($"Email: {userProfile.Contact.Email}");
         Console.WriteLine($"Bio length: {userProfile.Bio.BioText.Length} characters");
         Console.WriteLine($"Interests: {string.Join(", ", userProfile.Bio.Interests)}");
+        Console.WriteLine($"Address: {userProfile.Contact.Address.Street}, {userProfile.Contact.Address.City}");
+        Console.WriteLine($"Coordinates: {userProfile.Contact.Address.Coordinates.latitude:F6}, {userProfile.Contact.Address.Coordinates.longitude:F6}");
     }
 }

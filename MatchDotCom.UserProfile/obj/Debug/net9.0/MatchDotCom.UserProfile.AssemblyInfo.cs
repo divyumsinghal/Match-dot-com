@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MatchDotCom.UserProfile")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+da47c87acb0d9e344c96aa3d3d8a327cb8897982")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+79733c8275ee9215e6ed93ca28b58c1737154315")]
 [assembly: System.Reflection.AssemblyProductAttribute("MatchDotCom.UserProfile")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MatchDotCom.UserProfile")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
