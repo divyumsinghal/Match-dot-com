@@ -3,6 +3,9 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Represents geographical coordinates with latitude and longitude.
+/// </summary>
 public class Coordinates
 {
     public required double latitude { get; set; }
@@ -15,10 +18,19 @@ public class NominatimResult
     public required string lon { get; set; }
 }
 
+/// <summary>
+/// A class for geocoding addresses using the Nominatim service.
+/// It retrieves coordinates for a given address and provides fallback coordinates if the geocoding fails.
+/// </summary>
 public class Geocoder
 {
     private static readonly HttpClient client = new HttpClient();
 
+    /// <summary>
+    /// Asynchronously retrieves coordinates for a given address using the Nominatim geocoding service.
+    /// </summary>
+    /// <param name="address">The address to geocode.</param>
+    /// <returns>A task that represents the asynchronous operation, containing the coordinates if successful, or null if not.</returns>
     public static async Task<Coordinates?> GetCoordinatesAsync(string address)
     {
         try
@@ -78,24 +90,21 @@ public class Geocoder
         }
     }
 
+    /// <summary>
+    /// Provides fallback coordinates for common Irish addresses, particularly Dublin.
+    /// Later make it more sophisticated by checking for Dublin-related keywords in the address.
+    /// </summary>
+    /// <param name="address">The address to check for Dublin-related keywords.</param>
+    /// <returns>Coordinates object with fallback values.</returns>
     private static Coordinates GetFallbackCoordinates(string address)
     {
         // Provide reasonable fallback coordinates for Dublin, Ireland
         // Since the example uses Dublin addresses
-        if (address.ToLower().Contains("dublin") || address.ToLower().Contains("d02"))
-        {
-            return new Coordinates
-            {
-                latitude = 53.3498 + new Random().NextDouble() * 0.1 - 0.05, // random coordinates for Dublin
-                longitude = -6.2603 + new Random().NextDouble() * 0.1 - 0.05
-            };
-        }
 
-        // Default to Dublin city center for Irish addresses
         return new Coordinates
         {
-            latitude = 53.3498,
-            longitude = -6.2603
+            latitude = 53.3498 + new Random().NextDouble() * 0.1 - 0.05, // random coordinates for Dublin
+            longitude = -6.2603 + new Random().NextDouble() * 0.1 - 0.05
         };
     }
 }
