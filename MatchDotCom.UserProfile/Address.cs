@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace MatchDotCom.UserDetails
 {
@@ -51,6 +52,8 @@ namespace MatchDotCom.UserDetails
         /// <param name="postalCode">The postal code.</param>
         /// <param name="country">The country.</param>
         /// <param name="eircode">The Eircode (optional).</param>
+
+        [SetsRequiredMembers]
         public Address(string street, string city, string stateOrProvince, string postalCode, string country, string eircode)
         {
             Street = street;

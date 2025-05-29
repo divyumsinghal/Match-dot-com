@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace MatchDotCom.UserDetails
 {
@@ -45,6 +46,8 @@ namespace MatchDotCom.UserDetails
         /// </summary>
         /// <param name="email">The email address of the user.</param>
         /// <param name="phoneNumber">The phone number of the user.</param>
+        /// /// <param name="address">The address of the user.</param>
+        [SetsRequiredMembers]
         public Contact(string email, string phoneNumber, Address address)
         {
             Email = email;

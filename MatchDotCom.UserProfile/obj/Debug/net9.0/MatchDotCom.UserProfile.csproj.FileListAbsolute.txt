@@ -10,3 +10,4 @@
 /home/sin/Match-dot-com/MatchDotCom.UserProfile/obj/Debug/net9.0/refint/MatchDotCom.UserProfile.dll
 /home/sin/Match-dot-com/MatchDotCom.UserProfile/obj/Debug/net9.0/MatchDotCom.UserProfile.pdb
 /home/sin/Match-dot-com/MatchDotCom.UserProfile/obj/Debug/net9.0/ref/MatchDotCom.UserProfile.dll
+/home/sin/Match-dot-com/MatchDotCom.UserProfile/obj/Debug/net9.0/MatchDotCom.UserProfile.csproj.AssemblyReference.cache

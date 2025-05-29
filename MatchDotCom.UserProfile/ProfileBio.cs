@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
+using System.Text.RegularExpressions;
 
 namespace MatchDotCom.UserDetails
 {
@@ -64,11 +66,14 @@ namespace MatchDotCom.UserDetails
         /// </summary>
         /// <param name="bioText">The bio text of the user.</param>
         /// <param name="lifeMotto">The life motto or quote of the user.</param>
-        public ProfileBio(string bioText, string? lifeMotto, MatchDotCom.UserDetails.GenderOptions gender)
+        [SetsRequiredMembers]
+        public ProfileBio(string bioText, string? lifeMotto, MatchDotCom.UserDetails.GenderOptions gender, List<MatchDotCom.UserDetails.GenderOptions> genderPreference, List<MatchDotCom.UserDetails.Interests> interests)
         {
             BioText = bioText;
             LifeMotto = lifeMotto;
             Gender = gender;
+            GenderPreference = genderPreference;
+            Interests = interests;
         }
 
 

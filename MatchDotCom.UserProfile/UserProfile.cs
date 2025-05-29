@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace MatchDotCom.UserProfile
 {
@@ -28,6 +29,7 @@ namespace MatchDotCom.UserProfile
         /// <param name="dateOfBirth">The date of birth of the user.</param>
         /// <param name="contact">The contact information of the user.</param>
         /// <param name="bio">The profile bio of the user.</param>
+        [SetsRequiredMembers]
         public UserProfile(string username, string firstName, string middleName, string lastName, DateTime dateOfBirth, MatchDotCom.UserDetails.Contact contact, MatchDotCom.UserDetails.ProfileBio bio)
         {
             if (string.IsNullOrWhiteSpace(username) || username.Length < 3 || username.Length > 20 || !Regex.IsMatch(username, @"^[a-zA-Z0-9_]+$"))
