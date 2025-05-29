@@ -59,6 +59,10 @@ namespace MatchDotCom.UserDetails
             PostalCode = postalCode;
             Country = country;
             Eircode = eircode;
+
+            // Get Latitude and Longitude from Eircode
+            Latitude = 0.0; // Placeholder for actual geolocation logic
+            Longitude = 0.0; // Placeholder for actual geolocation logic
         }
     }
 }
