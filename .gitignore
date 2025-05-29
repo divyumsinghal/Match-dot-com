@@ -172,3 +172,44 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# C#
+# Ignore build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Rider project files
+.idea/
+
+# Mac system files
+.DS_Store
+
+# NuGet packages
+*.nupkg
+packages/
+*.snupkg
+
+# Logs
+*.log
+
+# Others
+*.vspscc
+*.vssscc
+*.pdb
+*.cache
