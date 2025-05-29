@@ -59,8 +59,6 @@ namespace MatchDotCom.UserDetails
             PostalCode = postalCode;
             Country = country;
             Eircode = eircode;
-
-
         }
     }
 }
