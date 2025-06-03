@@ -29,9 +29,9 @@ namespace MatchDotCom.ProfileManagement.Services
         /// <returns>A task representing the asynchronous add operation.</returns>
         /// <exception cref="ArgumentNullException">Thrown when profile is null.</exception>
         /// <exception cref="InvalidOperationException">Thrown when a profile with the same username or GUID already exists.</exception>
-        public async Task AddProfile(UserProfile.UserProfile profile)
+        public async Task<UserProfile.UserProfile?> AddProfile(UserProfile.UserProfile profile)
         {
-            await _profileRepository.Add(profile);
+            return await _profileRepository.Add(profile);
         }
 
         /// <summary>
@@ -60,12 +60,12 @@ namespace MatchDotCom.ProfileManagement.Services
         /// Updates an existing user profile in the system.
         /// </summary>
         /// <param name="profile">The user profile with updated information.</param>
-        /// <returns>A task representing the asynchronous update operation.</returns>
+        /// <returns>The updated User Profile</returns>
         /// <exception cref="ArgumentNullException">Thrown when profile is null.</exception>
         /// <exception cref="InvalidOperationException">Thrown when the profile does not exist in the system.</exception>
-        public async Task UpdateProfile(UserProfile.UserProfile profile)
+        public async Task<UserProfile.UserProfile?> UpdateProfile(UserProfile.UserProfile profile)
         {
-            await _profileRepository.Update(profile);
+            return await _profileRepository.Update(profile);
         }
 
 
@@ -73,28 +73,28 @@ namespace MatchDotCom.ProfileManagement.Services
         /// Deletes a user profile by username.
         /// </summary>
         /// <param name="username">The username of the profile to delete.</param>
-        /// <returns>A task representing the asynchronous delete operation.</returns>
+        /// <returns>A Bool representing the asynchronous delete operation. True if found and deleted</returns>
         /// <exception cref="ArgumentNullException">Thrown when username is null.</exception>
         /// <exception cref="ArgumentException">Thrown when username is empty or whitespace.</exception>
         /// <remarks>
         /// If no profile with the specified username exists, the operation completes without error.
         /// </remarks>
-        public async Task DeleteProfileByUsername(string username)
+        public async Task<bool> DeleteProfileByUsername(string username)
         {
-            await _profileRepository.DeleteByUsername(username);
+            return await _profileRepository.DeleteByUsername(username);
         }
 
         /// <summary>
         /// Deletes a user profile by its unique identifier.
         /// </summary>
         /// <param name="id">The unique identifier (GUID) of the profile to delete.</param>
-        /// <returns>A task representing the asynchronous delete operation.</returns>
+        /// <returns>A Bool representing the asynchronous delete operation.</returns>
         /// <remarks>
         /// If no profile with the specified GUID exists, the operation completes without error.
         /// </remarks>
-        public async Task DeleteProfileByGuid(Guid id)
+        public async Task<bool> DeleteProfileByGuid(Guid id)
         {
-            await _profileRepository.DeleteByGuid(id);
+            return await _profileRepository.DeleteByGuid(id);
         }
 
         /// <summary>

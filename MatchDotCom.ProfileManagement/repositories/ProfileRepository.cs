@@ -67,30 +67,34 @@ namespace MatchDotCom.ProfileManagement.Repositories
         /// Deletes a user profile by username.
         /// </summary>
         /// <param name="username">The username of the profile to delete.</param>
-        /// <returns>A task representing the asynchronous delete operation.</returns>
-        public async Task DeleteByUsername(string username)
+        /// <returns>True if the profile was deleted; otherwise, false.</returns>
+        public async Task<bool> DeleteByUsername(string username)
         {
             var profile = await GetByUsername(username);
             if (profile != null)
             {
                 _context.UserProfiles.Remove(profile);
                 await _context.SaveChangesAsync();
+                return true;
             }
+            return false;
         }
 
         /// <summary>
         /// Deletes a user profile by its unique identifier.
         /// </summary>
         /// <param name="id">The unique identifier (GUID) of the profile to delete.</param>
-        /// <returns>A task representing the asynchronous delete operation.</returns>
-        public async Task DeleteByGuid(Guid id)
+        /// <returns>True if the profile was deleted; otherwise, false.</returns>
+        public async Task<bool> DeleteByGuid(Guid id)
         {
             var profile = await GetByGuid(id);
             if (profile != null)
             {
                 _context.UserProfiles.Remove(profile);
                 await _context.SaveChangesAsync();
+                return true;
             }
+            return false;
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace MatchDotCom.ProfileManagement.Controllers
 {
@@ -17,7 +18,10 @@ namespace MatchDotCom.ProfileManagement.Controllers
         public async Task<IActionResult> CreateProfile([FromBody] UserProfile.UserProfile userProfile)
         {
             var createdProfile = await _profileService.AddProfile(userProfile);
-            return Ok(createdProfile);
+            if (createdProfile == null)
+                return BadRequest("Profile could not be created.");
+
+            return CreatedAtAction(nameof(GetProfile), new { username = createdProfile.Username }, createdProfile);
         }
 
         [HttpGet("{username}")]
@@ -36,7 +40,7 @@ namespace MatchDotCom.ProfileManagement.Controllers
         {
             if (username != userProfile.Username)
             {
-                return BadRequest();
+                return BadRequest("Username in URL and body do not match.");
             }
 
             var updatedProfile = await _profileService.UpdateProfile(userProfile);
@@ -50,7 +54,11 @@ namespace MatchDotCom.ProfileManagement.Controllers
         [HttpDelete("{username}")]
         public async Task<IActionResult> DeleteProfile(string username)
         {
-            await _profileService.DeleteProfileByUsername(username);
+            var deleted = await _profileService.DeleteProfileByUsername(username);
+            if (!deleted)
+            {
+                return NotFound();
+            }
             return Ok();
         }
     }
