@@ -2,6 +2,11 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 
+/// <summary>
+/// MatchDotCom UserProfile namespace contains classes and methods related to user profiles.
+/// </summary>
+/// Each user has a unique username which is used to identify them on the platform.
+///
 namespace MatchDotCom.UserProfile
 {
     public class UserProfile
