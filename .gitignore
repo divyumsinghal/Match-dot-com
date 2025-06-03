@@ -213,3 +213,6 @@ packages/
 *.vssscc
 *.pdb
 *.cache
+
+# personal
+user-profile-service/

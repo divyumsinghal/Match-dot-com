@@ -3,15 +3,6 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-/// <summary>
-/// Represents geographical coordinates with latitude and longitude.
-/// </summary>
-public class Coordinates
-{
-    public required double latitude { get; set; }
-    public required double longitude { get; set; }
-}
-
 public class NominatimResult
 {
     public required string lat { get; set; }
