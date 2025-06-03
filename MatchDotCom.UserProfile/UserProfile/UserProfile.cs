@@ -18,6 +18,10 @@ namespace MatchDotCom.UserProfile
         public required string MiddleName { get; set; } = "";
         public required string LastName { get; set; } = "";
         public required DateTime DateOfBirth { get; set; }
+        public int Age =>
+            DateOfBirth > DateTime.UtcNow.AddYears(-(DateTime.UtcNow.Year - DateOfBirth.Year)) ?
+                DateTime.UtcNow.Year - DateOfBirth.Year - 1 :
+                DateTime.UtcNow.Year - DateOfBirth.Year;
 
         public required UserDetails.Contact Contact { get; set; }
         public required UserDetails.ProfileBio Bio { get; set; }
