@@ -14,8 +14,8 @@ namespace MatchDotCom.UserProfile
         public required string LastName { get; set; } = "";
         public required DateTime DateOfBirth { get; set; }
 
-        public required MatchDotCom.UserDetails.Contact Contact { get; set; }
-        public required MatchDotCom.UserDetails.ProfileBio Bio { get; set; }
+        public required UserDetails.Contact Contact { get; set; }
+        public required UserDetails.ProfileBio Bio { get; set; }
 
         public required DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; set; }
@@ -31,7 +31,7 @@ namespace MatchDotCom.UserProfile
         /// <param name="contact">The contact information of the user.</param>
         /// <param name="bio">The profile bio of the user.</param>
         [SetsRequiredMembers]
-        public UserProfile(string username, string firstName, string middleName, string lastName, DateTime dateOfBirth, MatchDotCom.UserDetails.Contact contact, MatchDotCom.UserDetails.ProfileBio bio)
+        public UserProfile(string username, string firstName, string middleName, string lastName, DateTime dateOfBirth, UserDetails.Contact contact, UserDetails.ProfileBio bio)
         {
             if (string.IsNullOrWhiteSpace(username) || username.Length < 3 || username.Length > 20 || !Regex.IsMatch(username, @"^[a-zA-Z0-9_]+$"))
             {

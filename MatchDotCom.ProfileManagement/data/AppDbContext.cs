@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using MatchDotCom.UserProfile;
 
-namespace UserProfileService.Data
+namespace MatchDotCom.ProfileManagement.Data
 {
     public class AppDbContext : DbContext
     {
@@ -9,6 +8,6 @@ namespace UserProfileService.Data
         {
         }
 
-        public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<UserProfile.UserProfile> UserProfiles { get; set; }
     }
 }
