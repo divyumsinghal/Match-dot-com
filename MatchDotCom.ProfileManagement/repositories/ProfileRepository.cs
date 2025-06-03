@@ -83,7 +83,7 @@ namespace MatchDotCom.ProfileManagement.Repositories
         /// </summary>
         /// <param name="id">The unique identifier (GUID) of the profile to delete.</param>
         /// <returns>A task representing the asynchronous delete operation.</returns>
-        public async Task DeleteById(Guid id)
+        public async Task DeleteByGuid(Guid id)
         {
             var profile = await GetByGuid(id);
             if (profile != null)
