@@ -36,7 +36,7 @@ namespace MatchDotCom.UserDetails
         public string Eircode { get; set; }
 
         // Geolocation
-        public required Coordinates Coordinates { get; set; }
+        public required MatchDotCom.LocationServices.Coordinates Coordinates { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Address"/> class.
@@ -59,7 +59,7 @@ namespace MatchDotCom.UserDetails
             Eircode = eircode;
 
             // Initialize with default coordinates that will be updated asynchronously
-            Coordinates = new Coordinates
+            Coordinates = new MatchDotCom.LocationServices.Coordinates
             {
                 latitude = 53.3498, // Dublin city center default
                 longitude = -6.2603
@@ -90,7 +90,7 @@ namespace MatchDotCom.UserDetails
                     fullAddress = $"{Eircode}, {fullAddress}";
                 }
 
-                var coords = await Geocoder.GetCoordinatesAsync(fullAddress);
+                var coords = await MatchDotCom.LocationServices.Geocoder.GetCoordinatesAsync(fullAddress);
                 if (coords != null)
                 {
                     Coordinates = coords;

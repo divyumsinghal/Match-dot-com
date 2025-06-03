@@ -1,3 +1,5 @@
+namespace MatchDotCom.LocationServices;
+
 /// <summary>
 /// Represents geographical coordinates with latitude and longitude.
 /// </summary>

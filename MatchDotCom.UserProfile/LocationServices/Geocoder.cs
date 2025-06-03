@@ -3,6 +3,8 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
+namespace MatchDotCom.LocationServices;
+
 public class NominatimResult
 {
     public required string lat { get; set; }
