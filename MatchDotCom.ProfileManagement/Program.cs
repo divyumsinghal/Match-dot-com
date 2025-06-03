@@ -1,58 +1,41 @@
-﻿using MatchDotCom.UserProfile;
-using MatchDotCom.UserDetails;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+var builder = WebApplication.CreateBuilder(args);
 
+// Add services to the container.
+// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+builder.Services.AddOpenApi();
 
+var app = builder.Build();
 
-class Program
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
 {
-    static async Task Main(string[] args)
-    {
-        // Create an Address using the async factory method
-        var address = await Address.CreateAsync(
-            street: "Trinity College Dublin, College Green",
-            city: "Dublin",
-            stateOrProvince: "Leinster",
-            postalCode: "D02 PN40",
-            country: "Ireland",
-            eircode: "D02 PN40"
-        );
+    app.MapOpenApi();
+}
 
-        // Create Contact information
-        var contact = new Contact(
-            email: "john.doe@example.com",
-            phoneNumber: "+353 1 234 5678",
-            address: address
-        );
+app.UseHttpsRedirection();
 
-        // Create ProfileBio
-        var bio = new ProfileBio(
-            bioText: "I'm a passionate software developer who loves hiking, reading, and exploring new technologies. I enjoy traveling to new places and meeting interesting people. In my free time, I like to cook, play guitar, and spend time outdoors. I'm looking for someone who shares similar interests and values meaningful conversations. I believe in living life to the fullest and making every moment count. Family and friends are very important to me, and I'm always up for new adventures and experiences.",
-            lifeMotto: "Live life to the fullest",
-            gender: GenderOptions.Male,
-            genderPreference: new List<GenderOptions> { GenderOptions.Female },
-            interests: new List<Interests>()
-        );
-        bio.Interests.Add(Interests.Technology);
-        bio.Interests.Add(Interests.Travel);
-        bio.Interests.Add(Interests.Music);
+var summaries = new[]
+{
+    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+};
 
-        // Create UserProfile
-        var userProfile = new UserProfile
+app.MapGet("/weatherforecast", () =>
+{
+    var forecast =  Enumerable.Range(1, 5).Select(index =>
+        new WeatherForecast
         (
-            username: "john_doe_123",
-            firstName: "John",
-            middleName: "Michael",
-            lastName: "Doe",
-            dateOfBirth: new DateTime(1990, 5, 15),
-            contact: contact,
-            bio: bio
-        );
+            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+            Random.Shared.Next(-20, 55),
+            summaries[Random.Shared.Next(summaries.Length)]
+        ))
+        .ToArray();
+    return forecast;
+})
+.WithName("GetWeatherForecast");
 
-        var json = userProfile.ToJson();
+app.Run();
 
-        Console.WriteLine($"Created user profile for: {json}");
-    }
+record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+{
+    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }
