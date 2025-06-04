@@ -1,0 +1,6 @@
+@MatchDotCom.MatchingEngine_HostAddress = http://localhost:5064
+
+GET {{MatchDotCom.MatchingEngine_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
