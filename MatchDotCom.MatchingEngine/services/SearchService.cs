@@ -9,13 +9,15 @@ namespace MatchDotCom.MatchingEngine.Services
             _profiles = profiles;
         }
 
-        public List<UserProfile.UserProfile> FindProfilesByCriteria(UserMatching.MatchCriteria criteria, LocationServices.Coordinates location, double radius)
+        public async Task<List<UserProfile.UserProfile>> FindProfilesByCriteria(UserMatching.MatchCriteria criteria, LocationServices.Coordinates location, double radius)
         {
-            return _profiles.Where(profile =>
-                profile.Age >= criteria.AgeRange.MinAge &&
-                profile.Age <= criteria.AgeRange.MaxAge &&
-                GetDistance(profile.Contact.Address.Coordinates, location) <= radius
-            ).ToList();
+            return await Task.Run(() =>
+                _profiles.Where(profile =>
+                    profile.Age >= criteria.AgeRange.MinAge &&
+                    profile.Age <= criteria.AgeRange.MaxAge &&
+                    GetDistance(profile.Contact.Address.Coordinates, location) <= radius
+                ).ToList()
+            );
         }
 
         private double GetDistance(LocationServices.Coordinates loc1, LocationServices.Coordinates loc2)

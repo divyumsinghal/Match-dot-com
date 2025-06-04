@@ -26,6 +26,8 @@ namespace MatchDotCom.UserProfile
         public required UserDetails.Contact Contact { get; set; }
         public required UserDetails.ProfileBio Bio { get; set; }
 
+        public required UserMatching.MatchCriteria MatchCriteria { get; set; }
+
         public required DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; set; }
 
@@ -40,7 +42,7 @@ namespace MatchDotCom.UserProfile
         /// <param name="contact">The contact information of the user.</param>
         /// <param name="bio">The profile bio of the user.</param>
         [SetsRequiredMembers]
-        public UserProfile(string username, string firstName, string middleName, string lastName, DateTime dateOfBirth, UserDetails.Contact contact, UserDetails.ProfileBio bio)
+        public UserProfile(string username, string firstName, string middleName, string lastName, DateTime dateOfBirth, UserDetails.Contact contact, UserDetails.ProfileBio bio, UserMatching.MatchCriteria matchCriteria)
         {
             if (string.IsNullOrWhiteSpace(username) || username.Length < 3 || username.Length > 20 || !Regex.IsMatch(username, @"^[a-zA-Z0-9_]+$"))
             {
@@ -67,6 +69,11 @@ namespace MatchDotCom.UserProfile
                 throw new ArgumentException("Date of birth must be atleast 18 years old");
             }
 
+            if (matchCriteria == null)
+            {
+                throw new ArgumentNullException(nameof(matchCriteria), "Match criteria cannot be null.");
+            }
+
             Username = username;
             FirstName = firstName;
             MiddleName = middleName;
@@ -74,6 +81,7 @@ namespace MatchDotCom.UserProfile
             DateOfBirth = dateOfBirth;
             Contact = contact ?? throw new ArgumentNullException(nameof(contact));
             Bio = bio ?? throw new ArgumentNullException(nameof(bio));
+            MatchCriteria = matchCriteria;
         }
 
         /// <summary>
@@ -137,6 +145,7 @@ namespace MatchDotCom.UserProfile
     "CreatedAt": "2025-05-29T21:38:36.3331762Z",
     "UpdatedAt": null
   },
+  /// MatchCriteria is used to find potential matches for the user.
   "CreatedAt": "2025-05-29T21:38:36.3345606Z",
   "UpdatedAt": null
 }
